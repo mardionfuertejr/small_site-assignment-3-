@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ announcement.title }}{% endblock %}
+
+{% block content %}
+    <div class="announcement-detail">
+        <h1>{{ announcement.title }}</h1>
+        <div class="content">
+            <p>
+                <span id="preview-text">{{ announcement.content[:100] }}...</span>
+                <span id="full-text" style="display:none;">{{ announcement.content }}</span>
+                <span id="toggle-btn" class="read-more" onclick="toggleText()">Read more</span>
+            </p>
+        </div>
+        <div class="navigation">
+            <a href="{{ url_for('announcements_list') }}" class="back-link">← Back to Announcements</a>
+        </div>
+    </div>
+{% endblock %}

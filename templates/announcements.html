@@ -4,12 +4,11 @@
 
 {% block content %}
     <h1>Announcements</h1>
-    <div class="announcements-list">
-        {% for id, ann in announcements.items() %}
-            <div class="announcement-item">
-                <h3><a href="{{ url_for('announcement_detail', announcement_id=id) }}">{{ ann.title }}</a></h3>
-                <p class="preview">{{ ann.content[:100] }}...</p>
-            </div>
-        {% endfor %}
-    </div>
+    {% for id in announcements %}
+        {% set ann = announcements[id] %}
+        <div class="announcement">
+            <h3><a href="{{ url_for('announcement_detail', announcement_id=id) }}">{{ ann.title }}</a></h3>
+            <p>{{ ann.content[:100] }}...</p>
+        </div>
+    {% endfor %}
 {% endblock %}
